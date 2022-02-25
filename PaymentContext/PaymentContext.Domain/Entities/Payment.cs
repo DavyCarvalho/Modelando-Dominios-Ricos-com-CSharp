@@ -1,4 +1,6 @@
-﻿namespace PaymentContext.Domain.Entities
+﻿using PaymentContext.Domain.ValueObjects;
+
+namespace PaymentContext.Domain.Entities
 {
     public abstract class Payment
     {
@@ -7,9 +9,9 @@
             decimal total,
             decimal totalPaid,
             string owner,
-            string document,
-            string billingAddress,
-            string email)
+            Document document,
+            Address billingAddress,
+            Email email)
         {
             Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
             PaidDate = paidDate;
@@ -28,8 +30,8 @@
         public decimal Total { get; private set; }
         public decimal TotalPaid { get; private set; }
         public string Owner { get; private set; }
-        public string Document { get; private set; }
-        public string BillingAddress { get; private set; }
-        public string Email { get; private set; }
+        public Document Document { get; private set; }
+        public Address BillingAddress { get; private set; }
+        public Email Email { get; private set; }
     }
 }
